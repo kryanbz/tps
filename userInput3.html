@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TPS Report</title>
+<link rel="stylesheet" type="text/css" href="myStyle.css">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+ 
+<!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <style>
+div {
+  margin: 70px;
+
+}
+</style> 
+</head>
+<body>
+<div>
+<label>Enter your Letter Grades here: </label><br>
+<input type= text id="namehere" size="70"><br>
+<br>
+<br>
+
+
+<button class="btn btn-secondary" onclick="myFunction()">TPS it!</button>
+<br>
+<br>
+
+<table  class="letterGrades">
+  <tr>
+    <th class="row-1 row-Range">Range</th>
+	<th class="row-2 row-Letter">Letter</th>
+    <th class="row-3 row-Quality">Quality</th>
+	<th class="row-4 row-Description">Description</th>
+	<th class="row-5 row-Number">Number</th> 
+    <th class="row-6 row-Percentage">Percentage</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>F</td>
+	<td>0.0</td>
+	<td>Failure</td>
+    <td><p id="cF"></p></td>
+    <td><p id="pF"></p></td>
+  </tr>
+  <tr>
+    <td>59.5</td>
+    <td>D</td>
+	<td>1.0</td>
+	<td>Passing</td>
+    <td><p id="cD"></p></td>
+    <td><p id="pD"></p></td>
+  </tr>
+  <tr>
+    <td>64.5</td>
+    <td>D+</td>
+	<td>1.5</td>
+	<td>Passing</td>
+    <td><p id="cDp"></p></td>
+    <td><p id="pDp"></p></td>
+  </tr>
+  <tr>
+    <td>70</td>
+    <td>C</td>
+	<td>2.0</td>
+	<td>Satisfactory</td>
+    <td><p id="cC"></p></td>
+    <td><p id="pC"></p></td>
+  </tr>
+  <tr>
+    <td>74.5</td>
+    <td>C+</td>
+	<td>2.5</td>
+	<td>Satisfactory</td>
+    <td><p id="cCp"></p></td>
+    <td><p id="pCp"></p></td>
+  </tr>
+  <tr>
+    <td>79.5</td>
+    <td>B</td>
+	<td>3.0</td>
+	<td>Good</td>
+    <td><p id="cB"></p></td>
+    <td><p id="pB"></td>
+  </tr>
+  <tr>
+    <td>84.5</td>
+    <td>B+</td>
+	<td>3.5</td>
+	<td>Good</td>
+    <td><p id="cBp"></p></td>
+    <td><p id="pBp"></p></td>
+  </tr>
+  <tr>
+   <td>89.5</td>
+    <td>A-</td>
+	<td>3.8</td>
+	<td>Excellent</td>
+    <td><p id="cAm"></p></td>
+    <td><p id="pAm"></p></td>
+  </tr>
+  <tr>
+    <td>94.5</td>
+    <td>A</td>
+	<td>4.0</td>
+	<td>Excellent</td>
+    <td><p id="cA"></p></td>
+    <td><p id="pA"></p></</td>
+  </tr><tr>
+    <td></td>
+    <td>W</td>
+	<td></td>
+	<td>Withdrawal</td>
+    <td><p id="cW"></p></td>
+    <td><p id="pW"></p></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>I</td>
+	<td></td>
+	<td>Incomplete</td>
+    <td><p id="cI"></p></td>
+    <td><p id="pI"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>RE</td>
+	<td></td>
+	<td>Resigned</td>
+    <td><p id="cRE"></p></td>
+    <td><p id="pRE"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>AU</td>
+	<td></td>
+	<td>Audit</td>
+    <td><p id="cAU"></p></td>
+    <td><p id="pAU"></p></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+	<td></td>
+	<td>Total</td>
+    <td><p id="Tot"></p></td>
+    <td>100%</p></td>
+  </tr>
+</table>
+</div>
+<div id="container" style="width: 30%; height: 100%">
+
+<script>
+function myFunction() {
+  var str=document.getElementById("namehere").value;
+  var splitStr = str.split(" ");
+  var count = {};
+  var pcount = {};
+    splitStr.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+	var total = 0;
+
+    for (var property in count) {
+        total += count[property];
+    }
+	
+	
+
+    for (var ppt in pcount) {
+	 var percnt = (pcount[ppt]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  pcount[ppt]=fpercnt;
+      console.log(`${ppt}: ${pcount[ppt]}`);
+    }
+    if('A' in count){
+	  document.getElementById("cA").innerHTML = count["A"];
+	  var percnt = (count["A"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pA").innerHTML = fpercnt + "%";
+	}  else {
+        document.getElementById("cA").innerHTML = 0;
+		document.getElementById("pA").innerHTML = 0 + "%";
+		count["A"] = 0;
+        }
+	if('A-' in count){
+	  document.getElementById("cAm").innerHTML = count["A-"];
+	  var percnt = (count["A-"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pAm").innerHTML = fpercnt + "%";
+	}  else {
+        document.getElementById("cAm").innerHTML = 0;
+		document.getElementById("pAm").innerHTML = 0 + "%";
+		count["A-"] = 0;
+        }
+	if('B+' in count){
+	  document.getElementById("cBp").innerHTML = count["B+"];
+	  var percnt = (count["B+"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pBp").innerHTML = fpercnt + "%";
+	}  else {
+        document.getElementById("cBp").innerHTML = 0;
+		document.getElementById("pBp").innerHTML = 0 + "%";
+		count["B+"] = 0;
+        }
+	if('B' in count){
+	  document.getElementById("cB").innerHTML = count["B"];
+	  var percnt = (count["B"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pB").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cB").innerHTML = 0;
+		document.getElementById("pB").innerHTML = 0 + "%";
+		count["B"] = 0;
+        }
+	if('C+' in count){
+	  document.getElementById("cCp").innerHTML = count["C+"];
+	  var percnt = (count["C+"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pCp").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cCp").innerHTML = 0;
+		document.getElementById("pCp").innerHTML = 0 + "%";
+		count["C+"] = 0;
+        }
+	if('C' in count){
+	  document.getElementById("cC").innerHTML = count["C"];
+	  var percnt = (count["C"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pC").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cC").innerHTML = 0;
+		document.getElementById("pC").innerHTML = 0 + "%";
+		count["C"] = 0;
+        }
+	if('D+' in count){
+	  document.getElementById("cDp").innerHTML = count["D+"];
+	  var percnt = (count["D+"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pDp").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cDp").innerHTML = 0;
+		document.getElementById("pDp").innerHTML = 0 + "%";
+		count["D+"] = 0;
+        }
+    if('D' in count){
+	  document.getElementById("cD").innerHTML = count["D"];
+	  var percnt = (count["D"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pD").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cD").innerHTML = 0;
+		document.getElementById("pD").innerHTML = 0 + "%";
+		count["D"] = 0;
+        }
+    if('F' in count){
+	  document.getElementById("cF").innerHTML = count["F"];
+	  var percnt = (count["F"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pF").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cF").innerHTML = 0;
+		document.getElementById("pF").innerHTML = 0 + "%";
+		count["F"] = 0;
+        }
+	if('W' in count){
+	  document.getElementById("cW").innerHTML = count["W"];
+	  var percnt = (count["W"]/total)*100;
+	  var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pW").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cW").innerHTML = 0;
+		document.getElementById("pW").innerHTML = 0 + "%";
+		count["W"] = 0;
+        }
+	if('I' in count){
+	document.getElementById("cI").innerHTML = count["I"];
+	var percnt = (count["I"]/total)*100;
+	var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pI").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cI").innerHTML = 0;
+		document.getElementById("pI").innerHTML = 0 + "%";
+		count["I"] = 0;
+        }
+	if('RE' in count){
+    document.getElementById("cRE").innerHTML = count["RE"];
+	var percnt = (count["RE"]/total)*100;
+	var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pRE").innerHTML = fpercnt + "%";
+    } else {
+        document.getElementById("cRE").innerHTML = 0;
+		document.getElementById("pRE").innerHTML = 0 + "%";
+		count["RE"] = 0;
+        }
+    if('AU' in count){
+	document.getElementById("cAU").innerHTML = count["AU"];
+	var percnt = (count["AU"]/total)*100;
+	var fpercnt = percnt.toFixed(2);
+	  document.getElementById("pAU").innerHTML = fpercnt + "%";
+	} else {
+        document.getElementById("cAU").innerHTML = 0;
+		document.getElementById("pAU").innerHTML = 0 + "%";
+		count["AU"] = 0;
+        }
+	document.getElementById("Tot").innerHTML = total;
+	
+	console.log(JSON.stringify(count))
+	
+	      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Number');
+        data.addRows([
+              ["A", count["A"]],
+              ["A-", count["A-"]],
+              ["B+", count["B+"]],
+              ["B", count["B"]],
+              ["C+", count["C+"]],
+              ["C", count["C"]],
+              ["D+", count["D+"]],
+			  ["D", count["D"]],
+			  ["F", count["F"]],
+			  ["W", count["W"]],
+			  ["I", count["I"]],
+			  ["RE", count["RE"]],
+			  ["AU", count["AU"]]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Count of Letter Grades',
+                       'width':500,
+                       'height':200};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+}
+</script>
+
+<!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+
+</body>
+</html> 
+
+

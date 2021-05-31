@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<label>Enter your Name here: </label><br>
+<input type= text id="namehere" onchange="displayname()"><br>
+
+
+<script>
+
+
+function displayname() {
+var obj={}
+var repeats=[];
+
+    str=document.getElementById("namehere").value;
+    document.getElementById("demo").innerHTML = str;
+    document.getElementById("stringLength").innerHTML = str.length;
+	for(x = 0, length = str.length; x < length; x++) {
+    var l = str.charAt(x)
+    obj[l] = (isNaN(obj[l]) ? 1 : obj[l] + 1);
+}
+var objct = JSON.stringify(obj);
+document.getElementById("objct").innerHTML = objct;
+}
+
+</script>
+
+
+<p id="demo"></p>
+<p id="stringLength"></p>
+<p id="objct"></p>
+</body>
+</html> 
+
+

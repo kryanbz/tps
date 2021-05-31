@@ -1,0 +1,4 @@
+mongoimport --type csv -d tps -c General --headerline --drop General.csv
+mongoimport --type csv -d tps -c Coverage --headerline --drop Coverage.csv
+mongoimport --type csv -d tps -c Effectiveness --headerline --drop Effectiveness.csv
+mongoimport --type csv -d tps -c Consequences --headerline --drop Consequences.csv
