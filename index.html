@@ -174,14 +174,14 @@ function myFunction() {
 
     for (var ppt in pcount) {
 	 var percnt = (pcount[ppt]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  pcount[ppt]=fpercnt;
       console.log(`${ppt}: ${pcount[ppt]}`);
     }
     if('A' in count){
 	  document.getElementById("cA").innerHTML = count["A"];
 	  var percnt = (count["A"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pA").innerHTML = fpercnt + "%";
 	}  else {
         document.getElementById("cA").innerHTML = 0;
@@ -191,7 +191,7 @@ function myFunction() {
 	if('A-' in count){
 	  document.getElementById("cAm").innerHTML = count["A-"];
 	  var percnt = (count["A-"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pAm").innerHTML = fpercnt + "%";
 	}  else {
         document.getElementById("cAm").innerHTML = 0;
@@ -201,7 +201,7 @@ function myFunction() {
 	if('B+' in count){
 	  document.getElementById("cBp").innerHTML = count["B+"];
 	  var percnt = (count["B+"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pBp").innerHTML = fpercnt + "%";
 	}  else {
         document.getElementById("cBp").innerHTML = 0;
@@ -211,7 +211,7 @@ function myFunction() {
 	if('B' in count){
 	  document.getElementById("cB").innerHTML = count["B"];
 	  var percnt = (count["B"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pB").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cB").innerHTML = 0;
@@ -221,7 +221,7 @@ function myFunction() {
 	if('C+' in count){
 	  document.getElementById("cCp").innerHTML = count["C+"];
 	  var percnt = (count["C+"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pCp").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cCp").innerHTML = 0;
@@ -231,7 +231,7 @@ function myFunction() {
 	if('C' in count){
 	  document.getElementById("cC").innerHTML = count["C"];
 	  var percnt = (count["C"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pC").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cC").innerHTML = 0;
@@ -241,7 +241,7 @@ function myFunction() {
 	if('D+' in count){
 	  document.getElementById("cDp").innerHTML = count["D+"];
 	  var percnt = (count["D+"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pDp").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cDp").innerHTML = 0;
@@ -251,7 +251,7 @@ function myFunction() {
     if('D' in count){
 	  document.getElementById("cD").innerHTML = count["D"];
 	  var percnt = (count["D"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pD").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cD").innerHTML = 0;
@@ -261,7 +261,7 @@ function myFunction() {
     if('F' in count){
 	  document.getElementById("cF").innerHTML = count["F"];
 	  var percnt = (count["F"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pF").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cF").innerHTML = 0;
@@ -271,7 +271,7 @@ function myFunction() {
 	if('W' in count){
 	  document.getElementById("cW").innerHTML = count["W"];
 	  var percnt = (count["W"]/total)*100;
-	  var fpercnt = percnt.toFixed(2);
+	  var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pW").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cW").innerHTML = 0;
@@ -281,7 +281,7 @@ function myFunction() {
 	if('I' in count){
 	document.getElementById("cI").innerHTML = count["I"];
 	var percnt = (count["I"]/total)*100;
-	var fpercnt = percnt.toFixed(2);
+	var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pI").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cI").innerHTML = 0;
@@ -291,7 +291,7 @@ function myFunction() {
 	if('RE' in count){
     document.getElementById("cRE").innerHTML = count["RE"];
 	var percnt = (count["RE"]/total)*100;
-	var fpercnt = percnt.toFixed(2);
+	var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pRE").innerHTML = fpercnt + "%";
     } else {
         document.getElementById("cRE").innerHTML = 0;
@@ -301,7 +301,7 @@ function myFunction() {
     if('AU' in count){
 	document.getElementById("cAU").innerHTML = count["AU"];
 	var percnt = (count["AU"]/total)*100;
-	var fpercnt = percnt.toFixed(2);
+	var fpercnt = percnt.toFixed(0);
 	  document.getElementById("pAU").innerHTML = fpercnt + "%";
 	} else {
         document.getElementById("cAU").innerHTML = 0;
